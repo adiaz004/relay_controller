@@ -62,7 +62,7 @@ class Relay(Resource):
     def get(self, id):
         shelf = get_db()
         if not (id in shelf):
-            return {'message': "relay not found", 'data': {}}, 404
+                return {'message': f"relay {id} not found", 'data': {}}, 404
 
         return {
             'message': 'Relay found',
@@ -72,9 +72,40 @@ class Relay(Resource):
     def delete(self, id):
         shelf = get_db()
         if not (id in shelf):
-            return {'message': "relay not found", 'data': {}}, 404
+                return {'message': f"relay {id} not found", 'data': {}}, 404
         del shelf[id]
         return '', 204
 
+class RelayStatus(Resource):
+
+    def get(self, id=None):
+        shelf = get_db()
+        if not (id in shelf):
+            return {'message': f"relay {id} not found", 'data': {}}, 404
+        status = 1
+        return {
+            'message': f'relay {id} status',
+            'data': status
+        }, 200
+
+class RelaySetMode(Resource):
+    def put(self, id=None, mode=0):
+        shelf = get_db()
+        if not (id in shelf):
+            return {'message': f"relay {id} not found", 'data': {}}, 404
+    
+        relay = shelf[id]
+        gpio = relay.gpio
+
+        # do gpio toggle things
+
+        return {
+            'message': f'relay {id}',
+            'data': mode
+        }, 200
+
+
 api.add_resource(Relays, '/relays')
 api.add_resource(Relay, '/relay/<id>')
+api.add_resource(RelayStatus, '/relay/<id>/status')
+api.add_resource(RelaySetMode, '/relay/<id>/mode/<mode>')
