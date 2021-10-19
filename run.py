@@ -3,10 +3,10 @@ import markdown
 import shelve
 from flask import Flask, g
 from flask_restful import Api, Resource
-from relay_registery.relay_set_mode import RelaySetMode
-from relay_registery.relay import Relay
-from relay_registery.relays import Relays
-from relay_registery.relay_status import RelayStatus
+from relay_api.relay_set_mode import RelaySetMode
+from relay_api.relay import Relay
+from relay_api.relays import Relays
+from relay_api.relay_status import RelayStatus
 import sys
 
 app = Flask(__name__)
