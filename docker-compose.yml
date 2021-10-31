@@ -1,9 +1,14 @@
 version: '3.7'
 
 services:
-  device-registry:
+  relay-controller:
     build: .
     volumes:
       - .:/usr/src/app
     ports:
-      - 5000:80
+      - 8080:80
+      - 9000:22
+    mem_limit: 4G
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
