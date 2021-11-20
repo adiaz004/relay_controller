@@ -3,3 +3,5 @@ markdown==3.3.4
 flask_restful
 RPi.GPIO
 flask_cors
+flask-sqlalchemy
+flask-login

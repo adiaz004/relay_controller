@@ -5,9 +5,10 @@ services:
     build: .
     volumes:
       - .:/usr/src/app
+      - /dev/gpiomem:/dev/gpiomem
+      - /dev/mem:/dev/mem
     ports:
       - 8080:80
-      - 9000:22
     mem_limit: 4G
     cap_add:
       - NET_ADMIN

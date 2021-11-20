@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>My Toke = {window.token}</p>
+        <p>My Token = {window.token}</p>
         <a
           className="App-link"
           href="https://reactjs.org"
